@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    /* Usamos cover para que no haya franjas, pero lo centramos */
+    background: url('sources/Portada.png') no-repeat center center / 100% 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: stretch;
+    overflow: hidden;
+}
+
+.nav-bar {
+    width: 100%;
+    max-width: 400px;
+    /* Color ORO con transparencia (puedes ajustar el 0.8 para más o menos brillo) */
+    background: rgba(212, 175, 55, 0.30); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    overflow-y: auto;
+}
+
+.title {
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 150px;
+    height: auto;
+    margin-bottom: 40px;
+    /* Sombra para que el escudo resalte del fondo dorado */
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4));
+}
+
+.nav-link {
+    background: #ffffff;
+    color: #264653;
+    width: 90%;
+    padding: 15px 20px;
+    margin: 10px 0;
+    border-radius: 15px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 600;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.nav-link:hover {
+    transform: translateX(-10px);
+    background: #f8f8f8;
+}
+
+/* --- ESTADOS OCULTOS (STAGES) --- */
+.stage {
+    display: none; /* Totalmente oculto por defecto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    background-color: #fff;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Solo se muestra cuando el ID está en la URL (#puertas) */
+.stage:target {
+    display: flex;
+    opacity: 1;
+}
+
+/* --- IMÁGENES DE FONDO DE CADA ETAPA --- */
+.puerta { background-image: url('sources/Puerta.png'); background-size: cover; }
+.atrio { background-image: url('sources/Atrio.png'); background-size: cover; }
+.lugar-santo { background-image: url('sources/Lugar-Santo.png'); background-size: cover; }
+.lugar-santisimo { background-image: url('sources/Lugar-Santisimo.png'); background-size: cover; }
+
+/* --- EL VELO BLANCO ANIMADO --- */
+.stage::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.7);
+    z-index: 110;
+    transform: scaleY(0);
+    transform-origin: top;
+}
+
+.stage:target::after {
+    animation: velo 3s ease-out forwards 2s;
+}
+
+@keyframes velo {
+    to { transform: scaleY(1); }
+}
+
+/* --- TEXTOS Y BOTONES ENCIMA DEL VELO --- */
+.stage h2, .stage p, .back {
+    position: relative;
+    z-index: 120;
+}
+
+.back {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #264653;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
