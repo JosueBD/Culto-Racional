@@ -85,6 +85,8 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
+    /* ... tus otros estilos ... */
+    background-color: #000; /* Fondo negro por si la imagen es muy horizontal */
 }
 
 /* Solo se muestra cuando el ID está en la URL (#puertas) */
@@ -98,6 +100,11 @@ body, html {
 .atrio { background-image: url('sources/Atrio.png'); background-size: cover; }
 .lugar-santo { background-image: url('sources/Lugar-Santo.png'); background-size: cover; }
 .lugar-santisimo { background-image: url('sources/Lugar-Santisimo.png'); background-size: cover; }
+.puerta, .atrio, .lugar-santo, .lugar-santisimo {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; /* CAMBIO CLAVE: "contain" en lugar de "cover" */
+}
 
 /* --- EL VELO BLANCO ANIMADO --- */
 .stage::after {
@@ -119,6 +126,14 @@ body, html {
 
 @keyframes velo {
     to { transform: scaleY(1); }
+}
+
+@media (min-width: 768px) {
+    .puerta, .atrio, .lugar-santo, .lugar-santisimo {
+        background-size: cover; /* En PC sí puede ser "cover" porque hay más ancho */
+    }
+    
+    /* ... resto de tu código de escritorio ... */
 }
 
 /* --- TEXTOS Y BOTONES ENCIMA DEL VELO --- */
