@@ -52,7 +52,7 @@ body, html {
 
 .nav-link {
     background: #ffffff;
-    color: #264653;
+    color: #c49704;
     width: 90%;
     padding: 15px 20px;
     margin: 10px 0;
@@ -63,7 +63,7 @@ body, html {
     gap: 15px;
     font-weight: 600;
     transition: 0.3s;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .nav-link:hover {
@@ -146,7 +146,7 @@ body, html {
     position: fixed;
     top: 20px;
     left: 20px;
-    background: #264653;
+    background: #c29503;
     color: white;
     padding: 10px 20px;
     border-radius: 8px;
